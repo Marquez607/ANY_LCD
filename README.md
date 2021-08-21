@@ -60,6 +60,9 @@ NOTE: Currently only supports 4 bit mode as that's also compatible with I2C modu
 	
 }any_lcd_t;
  ```
+### WIRING DIAGRAM
+![Diagram](LCD_1602_DIAGRAM.PNG) 
+ 
 ### Example LCDs on Amazon
 I2C:
 https://www.amazon.com/GeeekPi-Character-Backlight-Raspberry-Electrical/dp/B07S7PJYM6/ref=asc_df_B07S7PJYM6?tag=bingshoppinga-20&linkCode=df0&hvadid=80401897095985&hvnetw=o&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=&hvlocphy=&hvtargid=pla-4584001428555906&psc=1
