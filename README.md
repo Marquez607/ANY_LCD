@@ -10,7 +10,7 @@ PIC18F \
 TI TMS320F28379D DSP 
 
 ## KNOWLEDGE 
-Here's a refresher on C structs and C function pointers
+Here's a refresher on C structs and C function pointers \
 Function pointers: https://www.geeksforgeeks.org/function-pointer-in-c/  \
 Structs: https://www.geeksforgeeks.org/structures-c/
 
