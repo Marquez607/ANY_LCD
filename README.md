@@ -1,2 +1,140 @@
 # ANY_LCD
 ANY_LCD is a general purpose abstraction layer for interfacing a microcontroller with a 1602 style LCD 
+
+## HARDWARE WIRING 
+In this code, you are provided the below struct which instructs how the code interprets the input bitfield. It expects the bits to arrive 
+in the below format.
+
+NOTE: Currently only supports 4 bit mode as that's also compatible with I2C modules available for the 1602.
+
+### SNIPPET FROM ANY_LCD.h
+ ```
+ typedef struct any_lcd{
+	
+	/*********************************
+	 * NAME: lcd_write 
+	 * DESC: This function is used by the 
+	 * driver to write data to the lcd 
+	 *
+	 * NOTE: hardware interface for writing  
+	 * data to  lcd
+	 * HARDWARE NOTE: 
+	 *	FOR LCD WIRING
+	 *	BIT 7-4 -> LCD DATA 7-4
+	 *	BIT 3   -> LCD LED PIN(if it exists/for i2c)
+	 *	BIT 2   -> LCD E 
+	 *	BIT 1   -> LCD RW
+	 *	BIT 0   -> LCD RS  
+	 *
+	 * PARALLEL INTERFACE NOTE:
+	 * IGNORE the LED pin
+	 *
+	 ********************************/
+	void (*lcd_write)(uint8_t bitfield);
+	
+	/************************************
+	 * Name: Delay us 
+	 * Desc: delay microseconds  
+	 ***********************************/
+	void (*delay_us)(uint32_t microseconds);
+	
+}any_lcd_t;
+ ```
+### Example LCDs on Amazon
+I2C:
+https://www.amazon.com/GeeekPi-Character-Backlight-Raspberry-Electrical/dp/B07S7PJYM6/ref=asc_df_B07S7PJYM6?tag=bingshoppinga-20&linkCode=df0&hvadid=80401897095985&hvnetw=o&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=&hvlocphy=&hvtargid=pla-4584001428555906&psc=1
+
+Parallel (no I2C module soldered)
+https://www.amazon.com/HiLetgo-Display-Backlight-Controller-Character/dp/B00HJ6AFW6/ref=pd_lpo_1?pd_rd_i=B00HJ6AFW6&psc=1
+ 
+## CODE EXAMPLES 
+
+### Using ANY_LCD
+This snippet will write a string to your connected LCD:
+```
+  user_GPIO_Init(); //user must initialize own gpio/peripheral 
+
+  /****LCD INIT*****/
+  lcd.delay_us  = &DelayUS;
+  lcd.lcd_write = &WriteLCD;
+  LCD_Init(lcd); //will initialize lcd "logically" ie send the correct commands for 4 bit mode
+
+  char *str = "ANY LCD";
+  LCD_WriteString(str,lcd);
+```
+Another example using sprintf to display some data from a sensor:
+```
+  user_GPIO_Init(); //user must initialize own gpio/peripheral 
+
+  /****LCD INIT*****/
+  lcd.delay_us  = &DelayUS;
+  lcd.lcd_write = &WriteLCD;
+  LCD_Init(lcd); //will initialize lcd "logically" ie send the correct commands for 4 bit mode
+
+  char *str = "ANY LCD";
+  char buffer[32];
+  uint8_t data = read_sensor(); //use your imagination, could be ADC or some SPI peripheral
+  sprintf(buffer,"Sensor Value: %d",data);
+  LCD_WriteString(buffer,lcd);
+```
+
+In these examples, the WriteLCD function can be any write function that's connected to your LCD. DelayUS should be some kind of delay function that allows 
+microsecond increments (could technically work with larger time deltas but would make LCD very slow). 
+
+### WriteLCD examples for lcd.lcd_write:
+Note, PORTA 3 would be tied to something other than the LCD 
+```
+void WriteLCD(uint8_t bitfield){
+
+  /*****************
+   ASSUMING:
+   PORTA 7-4 -> LCD D 7-4
+   PORTA 2 -> LCD E 
+   PORTA 1 -> LCD RW 
+   PORTA 0 -> LCD RS 
+  ******************/
+   PORTA = bitfield; 
+}
+```
+
+Example where PORTA bits 7-1 are all in use but PORTA 0 is left floating.
+This may be a preferable setup for hardware layout
+```
+void WriteLCD(uint8_t bitfield){
+
+  /*****************
+   ASSUMING:
+   PORTA 7-4 -> LCD D 7-4
+   PORTA 3 -> LCD E 
+   PORTA 2 -> LCD RW 
+   PORTA 1 -> LCD RS 
+  ******************/
+  uint8_t high_nibble = bitfield &= 0xF0;
+  uint8_t low_nibble = (bitfield << 1) & 0x0F; 
+  bitfield = high_nibble | low_nibble;
+  
+  PORTA = bitfield; 
+}
+```
+
+Maybe all the LCD is connected to two different ports
+```
+void WriteLCD(uint8_t bitfield){
+
+  /*****************
+   ASSUMING:
+   PORTA 7-4 -> LCD D 7-4
+   PORTA 3 -> LCD E 
+   PORTA 2 -> LCD RW 
+   PORTA 1 -> LCD RS 
+  ******************/
+  uint8_t high_nibble = bitfield &= 0xF0;
+  uint8_t low_nibble = (bitfield << 1) & 0x0F; 
+  bitfield = high_nibble | low_nibble;
+  
+  PORTA = bitfield; 
+}
+```
+
+
+
