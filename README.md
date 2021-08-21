@@ -10,9 +10,10 @@ PIC18F \
 TI TMS320F28379D DSP 
 
 ## KNOWLEDGE 
-Here's a refresher on C structs and C function pointers \
+Here's a refresher on C structs, C function pointers, and bitwise operators \
 Function pointers: https://www.geeksforgeeks.org/function-pointer-in-c/  \
-Structs: https://www.geeksforgeeks.org/structures-c/
+Structs: https://www.geeksforgeeks.org/structures-c/ \
+Bitwise Operators: https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/ 
 
 ## HOW TO USE
 You can just drop this directly into your workspace directory along side your other source files and 
