@@ -2,6 +2,13 @@
 ANY_LCD is a general purpose abstraction layer for interfacing a microcontroller with a 1602 style LCD. This was meant to decouple the commonly used 
 lcd 1602 logic layer from the IO implementation on your microcontroller.
 
+NOTE: this library should be usable on basically any microcontroller that interfaced with a 1602
+Example MCUs I've used:
+TI TM4C123GH6PM 
+TI MSP432 
+PIC18F
+TI TMS320F28379D DSP 
+
 ## KNOWLEDGE 
 Here's a refresher on C structs and C function pointers
 Function pointers: https://www.geeksforgeeks.org/function-pointer-in-c/  \
