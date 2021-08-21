@@ -1,5 +1,6 @@
 # ANY_LCD
-ANY_LCD is a general purpose abstraction layer for interfacing a microcontroller with a 1602 style LCD 
+ANY_LCD is a general purpose abstraction layer for interfacing a microcontroller with a 1602 style LCD. This was meant to decouple the commonly used 
+lcd 1602 logic layer from the IO implementation on your microcontroller.
 
 ## KNOWLEDGE 
 Here's a refresher on C structs and C function pointers
@@ -140,6 +141,3 @@ void WriteLCD(uint8_t bitfield){
   PORTB = portb_nibble;
 }
 ```
-
-
-
