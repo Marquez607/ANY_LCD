@@ -3,7 +3,7 @@ ANY_LCD is a general purpose abstraction layer for interfacing a microcontroller
 lcd 1602 logic layer from the IO implementation on your microcontroller.
 
 NOTE: this library should be usable on basically any microcontroller that interfaced with a 1602
-Example MCUs I've used:
+Example MCUs I've used: \
 TI TM4C123GH6PM \
 TI MSP432 \
 PIC18F \
