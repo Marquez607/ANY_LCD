@@ -4,7 +4,7 @@ lcd 1602 logic layer from the IO implementation on your microcontroller.
 
 ## KNOWLEDGE 
 Here's a refresher on C structs and C function pointers
-Function pointers: https://www.geeksforgeeks.org/function-pointer-in-c/
+Function pointers: https://www.geeksforgeeks.org/function-pointer-in-c/  \
 Structs: https://www.geeksforgeeks.org/structures-c/
 
 ## HARDWARE WIRING 
