@@ -123,7 +123,7 @@ void WriteLCD(uint8_t bitfield){
 }
 ```
 
-Maybe all the LCD is connected to two different ports
+Maybe the LCD is connected to two different ports
 ```
 void WriteLCD(uint8_t bitfield){
 
