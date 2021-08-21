@@ -7,12 +7,17 @@ Example MCUs I've used:
 TI TM4C123GH6PM \
 TI MSP432 \
 PIC18F \
-TI TMS320F28379D DSP \
+TI TMS320F28379D DSP 
 
 ## KNOWLEDGE 
 Here's a refresher on C structs and C function pointers
 Function pointers: https://www.geeksforgeeks.org/function-pointer-in-c/  \
 Structs: https://www.geeksforgeeks.org/structures-c/
+
+## HOW TO USE
+You can just drop this directly into your workspace directory along side your other source files and 
+
+#include "ANY_LCD.h"
 
 ## HARDWARE WIRING 
 In this code, you are provided the below struct which instructs how the code interprets the input bitfield. It expects the bits to arrive 
