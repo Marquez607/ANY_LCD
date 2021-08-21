@@ -1,6 +1,11 @@
 # ANY_LCD
 ANY_LCD is a general purpose abstraction layer for interfacing a microcontroller with a 1602 style LCD 
 
+## KNOWLEDGE 
+Here's a refresher on C structs and C function pointers
+Function pointers: https://www.geeksforgeeks.org/function-pointer-in-c/
+Structs: https://www.geeksforgeeks.org/structures-c/
+
 ## HARDWARE WIRING 
 In this code, you are provided the below struct which instructs how the code interprets the input bitfield. It expects the bits to arrive 
 in the below format.
@@ -105,9 +110,9 @@ void WriteLCD(uint8_t bitfield){
   /*****************
    ASSUMING:
    PORTA 7-4 -> LCD D 7-4
-   PORTA 3 -> LCD E 
-   PORTA 2 -> LCD RW 
-   PORTA 1 -> LCD RS 
+   PORTA 3 -> LCD E  (bitfield 2)
+   PORTA 2 -> LCD RW (bitfield 1)
+   PORTA 1 -> LCD RS (bitfield 0)
   ******************/
   uint8_t high_nibble = bitfield &= 0xF0;
   uint8_t low_nibble = (bitfield << 1) & 0x0F; 
@@ -124,15 +129,15 @@ void WriteLCD(uint8_t bitfield){
   /*****************
    ASSUMING:
    PORTA 7-4 -> LCD D 7-4
-   PORTA 3 -> LCD E 
-   PORTA 2 -> LCD RW 
-   PORTA 1 -> LCD RS 
+   PORTB 7 -> LCD E  (bitfield 2)
+   PORTB 6 -> LCD RW (bitfield 1)
+   PORTB 5 -> LCD RS (bitfield 0)
   ******************/
-  uint8_t high_nibble = bitfield &= 0xF0;
-  uint8_t low_nibble = (bitfield << 1) & 0x0F; 
-  bitfield = high_nibble | low_nibble;
-  
-  PORTA = bitfield; 
+  uint8_t porta_nibble = bitfield &= 0xF0;
+  uint8_t portb_nibble = (bitfield & 0x0F) << 5; //we want bit 2 -> 7 so we shift by 5
+ 
+  PORTA = porta_nibble;
+  PORTB = portb_nibble;
 }
 ```
 
