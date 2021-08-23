@@ -78,6 +78,7 @@ This snippet will write a string to your connected LCD:
   user_GPIO_Init(); //user must initialize own gpio/peripheral 
 
   /****LCD INIT*****/
+  any_lcd_t lcd;
   lcd.delay_us  = &DelayUS;
   lcd.lcd_write = &WriteLCD;
   LCD_Init(lcd); //will initialize lcd "logically" ie send the correct commands for 4 bit mode
@@ -90,6 +91,7 @@ Another example using sprintf to display some data from a sensor:
   user_GPIO_Init(); //user must initialize own gpio/peripheral 
 
   /****LCD INIT*****/
+  any_lcd_t lcd;
   lcd.delay_us  = &DelayUS;
   lcd.lcd_write = &WriteLCD;
   LCD_Init(lcd); //will initialize lcd "logically" ie send the correct commands for 4 bit mode
