@@ -96,7 +96,6 @@ Another example using sprintf to display some data from a sensor:
   lcd.lcd_write = &WriteLCD;
   LCD_Init(lcd); //will initialize lcd "logically" ie send the correct commands for 4 bit mode
 
-  char *str = "ANY LCD";
   char buffer[32];
   uint8_t data = read_sensor(); //use your imagination, could be ADC or some SPI peripheral
   sprintf(buffer,"Sensor Value: %d",data);
@@ -134,7 +133,7 @@ void WriteLCD(uint8_t bitfield){
    PORTA 2 -> LCD RW (bitfield 1)
    PORTA 1 -> LCD RS (bitfield 0)
   ******************/
-  uint8_t high_nibble = bitfield &= 0xF0;
+  uint8_t high_nibble = bitfield & 0xF0;
   uint8_t low_nibble = (bitfield << 1) & 0x0F; 
   bitfield = high_nibble | low_nibble;
   
