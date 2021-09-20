@@ -85,9 +85,11 @@ This snippet will write a string to your connected LCD:
 
   char *str = "ANY LCD";
   LCD_WriteString(str,lcd);
+  
 ```
 Another example using sprintf to display some data from a sensor:
 ```
+int main(){
   user_GPIO_Init(); //user must initialize own gpio/peripheral 
 
   /****LCD INIT*****/
@@ -97,9 +99,18 @@ Another example using sprintf to display some data from a sensor:
   LCD_Init(lcd); //will initialize lcd "logically" ie send the correct commands for 4 bit mode
 
   char buffer[32];
-  uint8_t data = read_sensor(); //use your imagination, could be ADC or some SPI peripheral
-  sprintf(buffer,"Sensor Value: %d",data);
-  LCD_WriteString(buffer,lcd);
+  
+  while(1){
+ 
+    LCD_Reset(); //clear and reset cursor
+    uint8_t data = read_sensor(); //use your imagination, could be ADC or some SPI peripheral
+    sprintf(buffer,"Sensor Value: %d",data);
+    LCD_WriteString(buffer,lcd);
+    DelayUS(1E6); //delay 1 second
+ 
+  }
+  
+}
 ```
 
 In these examples, the WriteLCD function can be any write function that's connected to your LCD. DelayUS should be some kind of delay function that allows 
