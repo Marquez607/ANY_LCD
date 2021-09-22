@@ -71,6 +71,7 @@ Parallel (no I2C module soldered)
 https://www.amazon.com/HiLetgo-Display-Backlight-Controller-Character/dp/B00HJ6AFW6/ref=pd_lpo_1?pd_rd_i=B00HJ6AFW6&psc=1
  
 ## CODE EXAMPLES 
+### NOTE: user_GPIO_Init() is a dummy function that works as a standin for the developer initializing GPIO pins; these pins should also match the ones in your lcd_write function
 
 ### Using ANY_LCD
 This snippet will write a string to your connected LCD:
