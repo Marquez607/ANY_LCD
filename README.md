@@ -60,6 +60,45 @@ NOTE: Currently only supports 4 bit mode as that's also compatible with I2C modu
 	
 }any_lcd_t;
  ```
+ 
+ ### API FUNCTIONS ANY_LCD.h
+  ```
+ /************************FUNCTION PROTOYPES START*************************/
+
+/*****************************
+ * Name: LCD_Reset
+ * Desc: Clears LCD and returns cursor to 0
+ *****************************/
+void LCD_Reset(any_lcd_t lcd);
+
+/*****************************
+ * Name:LCD_WriteCMD
+ * Desc: write command to LCD
+ *****************************/
+void LCD_WriteCMD(uint16_t cmd,any_lcd_t lcd);
+
+/*****************************00
+ * Name:LCD_WriteString
+ * Desc: write string to LCD
+ *****************************/
+void LCD_WriteString(char *str,any_lcd_t lcd);
+/*****************************
+ * Name:LCD_WriteData
+ * Desc: write data to LCD
+ *****************************/
+void LCD_WriteData(uint16_t data,any_lcd_t lcd);
+
+/*****************************
+ * Name: LCD_Init
+ * Desc: sends LCD init sequence
+ *
+ * NOTE: DOES NOT INITIALIZE 
+ * HARDWARE PERIPHERALS 
+ *****************************/
+void LCD_Init(any_lcd_t lcd);
+
+/************************FUNCTION PROTOTYPES END**************************/
+  ```
 ### WIRING DIAGRAM
 ![Diagram](LCD_1602_DIAGRAM.PNG) 
  
