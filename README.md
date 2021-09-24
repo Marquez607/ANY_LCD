@@ -62,6 +62,7 @@ NOTE: Currently only supports 4 bit mode as that's also compatible with I2C modu
  ```
  
  ### API FUNCTIONS ANY_LCD.h
+ These are the only functions you need to call in your code
   ```
  /************************FUNCTION PROTOYPES START*************************/
 
