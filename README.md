@@ -61,6 +61,18 @@ NOTE: Currently only supports 4 bit mode as that's also compatible with I2C modu
 }any_lcd_t;
  ```
  
+### WIRING DIAGRAM
+![Diagram](LCD_1602_DIAGRAM.PNG) 
+ 
+### Example LCDs on Amazon
+I2C:
+https://www.amazon.com/GeeekPi-Character-Backlight-Raspberry-Electrical/dp/B07S7PJYM6/ref=asc_df_B07S7PJYM6?tag=bingshoppinga-20&linkCode=df0&hvadid=80401897095985&hvnetw=o&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=&hvlocphy=&hvtargid=pla-4584001428555906&psc=1
+
+Parallel (no I2C module soldered)
+https://www.amazon.com/HiLetgo-Display-Backlight-Controller-Character/dp/B00HJ6AFW6/ref=pd_lpo_1?pd_rd_i=B00HJ6AFW6&psc=1
+ 
+## CODE EXAMPLES 
+
  ### API FUNCTIONS ANY_LCD.h
  These are the only functions you need to call in your code
   ```
@@ -100,17 +112,7 @@ void LCD_Init(any_lcd_t lcd);
 
 /************************FUNCTION PROTOTYPES END**************************/
   ```
-### WIRING DIAGRAM
-![Diagram](LCD_1602_DIAGRAM.PNG) 
- 
-### Example LCDs on Amazon
-I2C:
-https://www.amazon.com/GeeekPi-Character-Backlight-Raspberry-Electrical/dp/B07S7PJYM6/ref=asc_df_B07S7PJYM6?tag=bingshoppinga-20&linkCode=df0&hvadid=80401897095985&hvnetw=o&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=&hvlocphy=&hvtargid=pla-4584001428555906&psc=1
 
-Parallel (no I2C module soldered)
-https://www.amazon.com/HiLetgo-Display-Backlight-Controller-Character/dp/B00HJ6AFW6/ref=pd_lpo_1?pd_rd_i=B00HJ6AFW6&psc=1
- 
-## CODE EXAMPLES 
 ### NOTE: user_GPIO_Init() is a dummy function that works as a standin for the developer initializing GPIO pins; these pins should also match the ones in your lcd_write function
 
 ### Using ANY_LCD
