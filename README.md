@@ -160,6 +160,8 @@ In these examples, the WriteLCD function can be any write function that's connec
 microsecond increments (could technically work with larger time deltas but would make LCD very slow). 
 
 ### WriteLCD examples for lcd.lcd_write:
+This function just has to be whatever interface you have to the LCD. It could be an i2c write to an io extender or some kind of parallel operation. It just needs to get the bitfield to the LCD somehow. 
+
 Note, PORTA 3 would be tied to something other than the LCD 
 ```
 void WriteLCD(uint8_t bitfield){
