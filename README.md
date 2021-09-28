@@ -168,12 +168,12 @@ void WriteLCD(uint8_t bitfield){
 
   /*****************
    ASSUMING:
-   PORTA 7-4 -> LCD D 7-4
-   PORTA 2 -> LCD E 
-   PORTA 1 -> LCD RW 
-   PORTA 0 -> LCD RS 
+   PORTC 7-4 -> LCD D 7-4
+   PORTC 2 -> LCD E 
+   PORTC 1 -> LCD RW 
+   PORTC 0 -> LCD RS 
   ******************/
-   PORTA = bitfield; 
+   PORTC = bitfield; 
 }
 ```
 
@@ -184,16 +184,16 @@ void WriteLCD(uint8_t bitfield){
 
   /*****************
    ASSUMING:
-   PORTA 7-4 -> LCD D 7-4
-   PORTA 3 -> LCD E  (bitfield 2)
-   PORTA 2 -> LCD RW (bitfield 1)
-   PORTA 1 -> LCD RS (bitfield 0)
+   PORTc 7-4 -> LCD D 7-4
+   PORTc 3 -> LCD E  (bitfield 2)
+   PORTc 2 -> LCD RW (bitfield 1)
+   PORTc 1 -> LCD RS (bitfield 0)
   ******************/
   uint8_t high_nibble = bitfield & 0xF0;
   uint8_t low_nibble = (bitfield << 1) & 0x0F; 
   bitfield = high_nibble | low_nibble;
   
-  PORTA = bitfield; 
+  PORTC = bitfield; 
 }
 ```
 
