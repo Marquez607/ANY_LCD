@@ -215,3 +215,34 @@ void WriteLCD(uint8_t bitfield){
   PORTB = portb_nibble;
 }
 ```
+###  examples DelayUS for lcd.delay_us 
+lcd.delay_us needs to be a function that can take in a uint32_t argument and delay that amount of microseconds. Below is an example.
+This doesn't technically have to be a software delay but I have that presented below. In an RTOS/OS context, it could be some kind of 
+task_sleep function. 
+
+```
+void DelayUS(uint32_t x){
+
+  for(uint32_t i=0;i<x;i++){
+    delay_us(1);  // NON PLATFORM SPECIFIC DELAY FUNCTION 	
+  }
+  
+}
+```
+
+If you know your MCU clock speed, your software delay could also look like this
+
+```
+#define MCU_CLK 8E6 //arbitary clock speed of 8MHz
+
+void DelayUS(uint32_t x){
+  
+  uint32_t new_x = (MCU_CLK/1E6) * x; // calculate number of mcu clock cycles
+  
+  for(uint32_t i=0;i<new_x;i++){
+     asm("NOP"); //assuming your MCU supports some kind of NOP instruction
+  }
+}
+
+```
+
