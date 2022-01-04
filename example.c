@@ -40,7 +40,7 @@ int main(void){
 	using the CMD function and this define will 
 	let you set your cursor to line 2
    */
-  LCD_WriteCMD(LCD_SET_LINE2);
+  LCD_WriteCMD(LCD_SET_LINE2,lcd);
   
   /*
     the LCD_WriteData() function will let us write 
@@ -50,13 +50,13 @@ int main(void){
   int i = 0;
   /* write 'U' 5 times on line 2 */
   while(i < 5){
-    LCD_WriteData('U');
+    LCD_WriteData('U',lcd);
   }
   
   /* this function will clear the lcd and reset the cursor 
      to the first position 
    */
-  LCD_Reset();   
+  LCD_Reset(lcd);   
 }
 
 
@@ -74,7 +74,7 @@ void writeLCD(uint8_t bitfield){
    PORTC 1 -> LCD RW 
    PORTC 0 -> LCD RS 
   ******************/	
-  PORTC = bitfield 
+  PORTC = bitfield;
 }
 
 
