@@ -7,6 +7,7 @@ NOTE: this library should be usable on basically any microcontroller that's inte
 Example MCUs I've used: \
 TI TM4C123GH6PM \
 TI MSP432 \
+TI MSP430 \
 PIC18F \
 TI TMS320F28379D DSP 
 
