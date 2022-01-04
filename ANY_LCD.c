@@ -184,10 +184,8 @@ static void LCD_MakeData(uint16_t *buffer,uint16_t data){
 static void LCD_SendBytes(uint16_t *buffer,any_lcd_t lcd,uint8_t len){
 	
 	for(uint8_t i = 0;i < len;i++){
-		
 		lcd.lcd_write(buffer[i]);
-        lcd.delay_us(1E3);
-		
+        	lcd.delay_us(1E3);
 	}
 
 }
